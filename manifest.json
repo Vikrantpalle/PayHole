@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Paywall Pass",
+  "version": "0.1.0",
+  "description": "My Chrome Extension",
+  "content_scripts": [
+    {
+      "matches": ["https://www.nytimes.com/*"],
+      "js": ["noJSHelper.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://www.newyorker.com/*", "https://www.thehindu.com/*"],
+      "js": ["cookieHelper.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["noJS.js"],
+      "matches": ["https://www.nytimes.com/*"]
+    }
+  ],
+  "permissions": ["scripting", "cookies"],
+  "host_permissions": ["https://www.newyorker.com/*"]
+}
